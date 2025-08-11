@@ -4,6 +4,7 @@ import StaffDashboard from "./routes/StaffDashboard";
 import GuestQR from "./routes/GuestQR";
 import ProtectedRoute from "./components/ProtectedRoute";
 import HotelPicker from "./routes/HotelPicker";
+import AdminDashboard from "./admin/pages/AdminDashboard";
 
 export default function App() {
   return (
@@ -16,12 +17,15 @@ export default function App() {
           path="/hotels/:hotelId"
           element={<ProtectedRoute><StaffDashboard /></ProtectedRoute>}
         />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+
         <Route
           path="/hotels/:hotelId/conversations/:convId"
           element={<ProtectedRoute><StaffDashboard /></ProtectedRoute>}
         />
         <Route path="/guest/:slug" element={<GuestQR />} />
-        <Route path="*" element={<Navigate to="/hotels/login" replace />} />
+       {/* Fallback */}
+        <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
     </BrowserRouter>
   );
