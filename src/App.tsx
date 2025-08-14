@@ -4,7 +4,16 @@ import StaffDashboard from "./routes/StaffDashboard";
 import GuestQR from "./routes/GuestQR";
 import ProtectedRoute from "./components/ProtectedRoute";
 import HotelPicker from "./routes/HotelPicker";
-import AdminDashboard from "./admin/pages/AdminDashboard";
+import AdminLayout from "./admin/AdminLayout";
+import AdminOverview from "./admin/pages/AdminOverview";
+import Hotels from "./admin/pages/hotels";
+import Departments from "./admin/pages/Departments";
+import Staff from "./admin/pages/Staff";
+import QuickReplies from "./admin/pages/QuickReplies";
+import QrLinks from "./admin/pages/QrLinks";
+import Settings from "./admin/pages/Settings";
+import AdminSignup from "./admin/pages/AdminSignup";
+
 
 export default function App() {
   return (
@@ -17,13 +26,27 @@ export default function App() {
           path="/hotels/:hotelId"
           element={<ProtectedRoute><StaffDashboard /></ProtectedRoute>}
         />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/dashboard" element={<AdminOverview />} />
 
         <Route
           path="/hotels/:hotelId/conversations/:convId"
           element={<ProtectedRoute><StaffDashboard /></ProtectedRoute>}
         />
         <Route path="/guest/:slug" element={<GuestQR />} />
+        <Route path="signup" element={<AdminSignup />} />
+
+
+        {/* Admin (layout + children) */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<AdminOverview />} />
+          <Route path="hotels" element={<Hotels />} />
+          <Route path="departments" element={<Departments />} />
+          <Route path="staff" element={<Staff />} />
+          <Route path="quick-replies" element={<QuickReplies />} />
+          <Route path="qr-links" element={<QrLinks />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+
        {/* Fallback */}
         <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
