@@ -20,6 +20,7 @@ export default function GuestQR() {
   if (!info) return <div className="p-6">Connecting…</div>;
 
   return (
+
     <div className="h-screen grid grid-rows-[auto_1fr_auto]">
       <header className="p-4 border-b">Chat with {info.conversation.department?.name || "Hotel"}</header>
       <main className="p-4 space-y-2 overflow-auto bg-gray-50">

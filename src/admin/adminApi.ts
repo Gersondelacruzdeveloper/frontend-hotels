@@ -2,6 +2,10 @@
 import api from "../lib/api";
 
 export const AdminApi = {
+  AuthApi: {
+  setPassword: (payload: { uid: string; token: string; new_password: string }) =>
+    api.post("/hotels/auth/set-password/", payload),
+   },
   hotels: {
     list: () => api.get("/hotels/hotels/"),
     create: (body: {

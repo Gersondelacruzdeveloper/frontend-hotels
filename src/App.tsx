@@ -13,6 +13,7 @@ import QuickReplies from "./admin/pages/QuickReplies";
 import QrLinks from "./admin/pages/QrLinks";
 import Settings from "./admin/pages/Settings";
 import AdminSignup from "./admin/pages/AdminSignup";
+import SetPassword from "./routes/SetPassword";
 
 
 export default function App() {
@@ -34,8 +35,7 @@ export default function App() {
         />
         <Route path="/guest/:slug" element={<GuestQR />} />
         <Route path="signup" element={<AdminSignup />} />
-
-
+        <Route path="/set-password/:uid/:token" element={<SetPassword />} />
         {/* Admin (layout + children) */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<AdminOverview />} />

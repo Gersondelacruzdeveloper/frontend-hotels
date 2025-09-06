@@ -27,6 +27,7 @@ export const fetchConversations = createAsyncThunk(
   async ({ hotelId, status }: { hotelId: UUID; status?: string }) => {
     const qs = new URLSearchParams({ hotel: hotelId, ...(status ? { status } : {}) });
     const { data } = await api.get(`/hotels/conversations/?${qs.toString()}`);
+    console.log('data=>', data)
     return data as Conversation[];
   }
 );
